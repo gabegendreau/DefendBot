@@ -4,9 +4,13 @@ public class SoundManager : MonoBehaviour
 {
     AudioSource audioSource;
     public AudioClip shotFired;
+    public AudioClip enemySpawn;
     public AudioClip enemyHit;
     public AudioClip stationDamaged;
     public AudioClip gameOver;
+    public AudioClip ghoulSpawn;
+    public AudioClip spectreSpawn;
+    public AudioClip spectreMove;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +21,11 @@ public class SoundManager : MonoBehaviour
     public void playShotFired()
     {
         audioSource.PlayOneShot(shotFired);
+    }
+
+    public void playEnemySpawn()
+    {
+        audioSource.PlayOneShot(enemySpawn);
     }
 
     public void playEnemyHit()
@@ -32,5 +41,20 @@ public class SoundManager : MonoBehaviour
     public void playGameOver()
     {
         audioSource.PlayOneShot(gameOver);
+    }
+
+        public void playGhoulSpawn()
+    {
+        audioSource.PlayOneShot(ghoulSpawn);
+    }
+
+        public void playSpectreSpawn()
+    {
+        audioSource.PlayOneShot(spectreSpawn);
+    }
+
+        public void playSpectreMove()
+    {
+        audioSource.PlayOneShot(spectreMove);
     }
 }

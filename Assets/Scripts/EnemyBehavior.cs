@@ -42,6 +42,7 @@ public class EnemyBehavior : MonoBehaviour
         spawnSpriteIndex = 0;
         isBeingDestroyed = false;
         hasSpawned = false;
+        soundManager.playEnemySpawn();
         SpawnAnim();
     }
 

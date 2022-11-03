@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 183681316624926427}
   - component: {fileID: -6725476097780247562}
   - component: {fileID: -1317452720104550449}
-  - component: {fileID: -4218578908845326476}
   - component: {fileID: 3093348154273536}
   m_Layer: 0
   m_Name: Spectre
@@ -28,10 +27,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139340976790755028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.31, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4113594321999345487}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,7 +48,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0011982173, y: -0.009585783}
+  m_Offset: {x: -0.009664342, y: -0.00012363121}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -59,7 +59,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.20198128, y: 0.31940755}
+  m_Size: {x: 0.32050708, y: 0.20088175}
   m_EdgeRadius: 0
 --- !u!50 &-1317452720104550449
 Rigidbody2D:
@@ -82,13 +82,94 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!212 &-4218578908845326476
-SpriteRenderer:
+--- !u!114 &3093348154273536
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139340976790755028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a1883d77892e0442ba7463430b51d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7.7
+  spectreDamage: 15
+  spectreSpawnSprites:
+  - {fileID: -430922545, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
+  - {fileID: 1651845828, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
+  - {fileID: -305307389, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
+  - {fileID: -1643645594, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
+  - {fileID: 1348257910, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
+  - {fileID: -1560207834, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
+  spawnFramesPerSecond: 8
+  spectreFlySprites:
+  - {fileID: 117854513, guid: 4941a02afe455ae409f99270251299eb, type: 3}
+  - {fileID: 690655871, guid: 4941a02afe455ae409f99270251299eb, type: 3}
+  - {fileID: -846521782, guid: 4941a02afe455ae409f99270251299eb, type: 3}
+  - {fileID: -2100423864, guid: 4941a02afe455ae409f99270251299eb, type: 3}
+  - {fileID: 707585287, guid: 4941a02afe455ae409f99270251299eb, type: 3}
+  - {fileID: -1139550576, guid: 4941a02afe455ae409f99270251299eb, type: 3}
+  flyFramesPerSecond: 8
+  zigZagAngle: 21
+  zigZagRotSpeed: 2.75
+  zigZagPauseTime: 0.3
+  spectreExplodeSprites:
+  - {fileID: 1985085412, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
+  - {fileID: 24313718, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
+  - {fileID: -1679144862, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
+  - {fileID: 1840270397, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
+  - {fileID: 2081268542, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
+  - {fileID: 1329749467, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
+  explodeFramesPerSecond: 8
+  spectrePhaseOutSprites:
+  - {fileID: 516554018, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
+  - {fileID: -2144341877, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
+  - {fileID: 635361900, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
+  - {fileID: -58225734, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
+  - {fileID: -911157406, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
+  - {fileID: -2093704195, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
+  phaseOutFramesPerSecond: 8
+--- !u!1 &8456086409141528269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4113594321999345487}
+  - component: {fileID: 1009242438301108009}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4113594321999345487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456086409141528269}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 183681316624926427}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!212 &1009242438301108009
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456086409141528269}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -134,49 +215,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3093348154273536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1139340976790755028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a1883d77892e0442ba7463430b51d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  spectreDamage: 15
-  spectreSpawnSprites:
-  - {fileID: -430922545, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
-  - {fileID: 1651845828, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
-  - {fileID: -305307389, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
-  - {fileID: -1643645594, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
-  - {fileID: 1348257910, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
-  - {fileID: -1560207834, guid: 455137c407940bc44bb1496fcf566e65, type: 3}
-  spawnFramesPerSecond: 8
-  spectreFlySprites:
-  - {fileID: 117854513, guid: 4941a02afe455ae409f99270251299eb, type: 3}
-  - {fileID: 690655871, guid: 4941a02afe455ae409f99270251299eb, type: 3}
-  - {fileID: -846521782, guid: 4941a02afe455ae409f99270251299eb, type: 3}
-  - {fileID: -2100423864, guid: 4941a02afe455ae409f99270251299eb, type: 3}
-  - {fileID: 707585287, guid: 4941a02afe455ae409f99270251299eb, type: 3}
-  - {fileID: -1139550576, guid: 4941a02afe455ae409f99270251299eb, type: 3}
-  flyFramesPerSecond: 8
-  spectreExplodeSprites:
-  - {fileID: 1985085412, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
-  - {fileID: 24313718, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
-  - {fileID: -1679144862, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
-  - {fileID: 1840270397, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
-  - {fileID: 2081268542, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
-  - {fileID: 1329749467, guid: b6762e6579e0669488b5641c0811b00a, type: 3}
-  explodeFramesPerSecond: 8
-  spectrePhaseOutSprites:
-  - {fileID: 516554018, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
-  - {fileID: -2144341877, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
-  - {fileID: 635361900, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
-  - {fileID: -58225734, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
-  - {fileID: -911157406, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
-  - {fileID: -2093704195, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
-  phaseOutFramesPerSecond: 8

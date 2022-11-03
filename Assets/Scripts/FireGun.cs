@@ -32,11 +32,11 @@ public class FireGun : MonoBehaviour
             Instantiate(projectile, spawnlocation, spawnRotation);
             soundManager.playShotFired();
             totalShotsFired += 1.0f;
-            float shotsThatHit = gameManager.GetTotalKilled();
-            if (shotsThatHit != 0.0f)
-            {
-                Debug.Log(shotsThatHit + "/" + totalShotsFired + " = " + shotsThatHit/totalShotsFired);
-            }
+            // float shotsThatHit = gameManager.GetTotalKilled();
+            // if (shotsThatHit != 0.0f)
+            // {
+            //     Debug.Log(shotsThatHit + "/" + totalShotsFired + " = " + shotsThatHit/totalShotsFired);
+            // }
         }
         
     }

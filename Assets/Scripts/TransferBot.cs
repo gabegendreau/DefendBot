@@ -126,4 +126,18 @@ public class TransferBot : MonoBehaviour
             return secondLocation;
         }
     }
+
+    public Vector3 GetFartherSpectreSpawnLocation()
+    {
+        Vector3 firstLocation = ghoulSpawnLocations[0].transform.position;
+        Vector3 secondLocation = ghoulSpawnLocations[1].transform.position;
+        float firstDistance = (player.transform.position - firstLocation).magnitude;
+        float secondDistance = (player.transform.position - secondLocation).magnitude;
+        if (firstDistance > secondDistance)
+        {
+            return firstLocation;
+        } else {
+            return secondLocation;
+        }
+    }
 }

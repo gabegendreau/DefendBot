@@ -11,7 +11,7 @@ public class SpectreBehavior : MonoBehaviour
     BoxCollider2D spectreCollider;
     Vector3 moveDirection;
     Vector3 movementVector;
-    public float speed;
+    public float speed; // 4.2
     public float spectreDamage;
     bool hasSpawned;
     bool isBeingDestroyed;
@@ -24,6 +24,11 @@ public class SpectreBehavior : MonoBehaviour
     public Sprite[] spectreFlySprites;
     int spectreFlyIndex;
     public int flyFramesPerSecond;
+    public float zigZagAngle; // 16
+    public float zigZagRotSpeed; // 1.53
+    float zigZagT;
+    bool zigZagPaused;
+    public float zigZagPauseTime;
     public Sprite[] spectreExplodeSprites;
     int spectreExplodeIndex;
     public int explodeFramesPerSecond;
@@ -34,6 +39,8 @@ public class SpectreBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        zigZagPaused = false;
+        zigZagT = 0.0f;
         hasSpawned = false;
         isBeingDestroyed = false;
         spriteChange = true;
@@ -43,6 +50,7 @@ public class SpectreBehavior : MonoBehaviour
         spectreFlyIndex = 0;
         spectreExplodeIndex = 0;
         spectrePhaseOutIndex = 0;
+        soundManager.playSpectreSpawn();
         SpawnAnim();
     }
 
@@ -54,12 +62,12 @@ public class SpectreBehavior : MonoBehaviour
         gameManager = FindObjectOfType<ManageGame>();
         spectreBody = GetComponent<Rigidbody2D>();
         spectreCollider = GetComponent<BoxCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         moveDirection = player.transform.position - gameObject.transform.position;
         moveDirection = moveDirection.normalized;
         movementVector = moveDirection * speed;
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-        gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 180.0f)); // GET ANGLE SO HEAD IS TOWARDS TRAVEL DIRECTION
+        gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 180.0f));
 
     }
 
@@ -70,12 +78,6 @@ public class SpectreBehavior : MonoBehaviour
         {
             if (!isDead && !isExploding)
             {
-                moveDirection = player.transform.position - gameObject.transform.position;
-                moveDirection = moveDirection.normalized;
-                movementVector = moveDirection * speed;
-                float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-                gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-                spectreBody.transform.position += movementVector * Time.deltaTime;
                 if (spriteChange)
                 {
                     spriteChange = false;
@@ -86,7 +88,25 @@ public class SpectreBehavior : MonoBehaviour
                         spectreFlyIndex = 0;
                     }
                     Invoke("ResetAnimChange", 1.0f/flyFramesPerSecond);
-                }        
+                }  
+                if (!zigZagPaused)
+                { 
+                    moveDirection = player.transform.position - gameObject.transform.position;
+                    moveDirection = moveDirection.normalized;
+                    movementVector = moveDirection * speed;
+                    float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+                    float angleToAdd = Mathf.Lerp(-zigZagAngle, zigZagAngle, zigZagT);
+                    gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + angleToAdd));
+                    spectreBody.transform.position += movementVector * Time.deltaTime;     
+                    zigZagT += zigZagRotSpeed * Time.deltaTime;
+                    if (zigZagT > 1.0f)
+                    {
+                        zigZagAngle *= -1.0f;
+                        zigZagT = 0.0f;
+                        zigZagPaused = true;
+                        Invoke("UnpauseZigZag", zigZagPauseTime);
+                    }
+                }    
             }
         }
     }
@@ -101,6 +121,7 @@ public class SpectreBehavior : MonoBehaviour
             {
                 hasSpawned = true;
                 spectreCollider.enabled = true;
+                soundManager.playSpectreMove();
             } else {
                 Invoke("SpawnAnim", 1.0f/spawnFramesPerSecond);
             }
@@ -119,6 +140,7 @@ public class SpectreBehavior : MonoBehaviour
         gameObject.tag = "Unshootable";
         gameManager.IncTotalKilled();
         spectreCollider.enabled = false;
+        soundManager.playSpectreSpawn();
         PhaseOut();
     }
 
@@ -165,5 +187,11 @@ public class SpectreBehavior : MonoBehaviour
             isExploding = true;
             Explode();
         }
+    }
+
+    void UnpauseZigZag()
+    {
+        soundManager.playSpectreMove();
+        zigZagPaused = false;
     }
 }

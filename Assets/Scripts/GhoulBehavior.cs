@@ -46,6 +46,7 @@ public class GhoulBehavior : MonoBehaviour
         explodeSpriteIndex = 0;
         burrowSpriteIndex = 0;
         spriteChange = true;
+        soundManager.playGhoulSpawn();
         SpawnAnim();
         SetGravity(player.GetGravity());
     }
@@ -103,6 +104,7 @@ public class GhoulBehavior : MonoBehaviour
         {
             enabled = false;
         }
+        soundManager.playGhoulSpawn();
         Burrow();
     }
 

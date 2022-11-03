@@ -8,7 +8,9 @@ public class ManageGame : MonoBehaviour
     int previousSpawnLocation;
     public GameObject enemyPrefab;
     public GameObject ghoulPrefab;
+    public GameObject spectrePrefab;
     public int numEnemiesKilledToGhoul;
+    public int numBaddiesKilledToSpectre;
     int numEnemiesKilled;
     public float minSpawnInterval;
     public float maxSpawnInterval;
@@ -37,7 +39,7 @@ public class ManageGame : MonoBehaviour
     {
         soundManager = FindObjectOfType<SoundManager>();
         player = FindObjectOfType<BotBehavior>();
-        platforms = FindObjectsOfType<TransferBot>();
+        platforms = FindObjectsOfType<TransferBot>();   // **** NOT IN ORDER THAT I EXPECT - EITHER PUT IN ARRAY MANUALLY OR GET NUMBER IN FUNTION BELOW
     }
 
     void SpawnEnemy()
@@ -51,7 +53,6 @@ public class ManageGame : MonoBehaviour
                 Instantiate(enemyPrefab, spawnLocations[randomIndex].transform.position, Quaternion.identity);
                 spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
                 totalBaddiesSpawned++;
-                Debug.Log("Baddies spawned: " + totalBaddiesSpawned);
                 Invoke("SpawnEnemy", spawnInterval);
             } else {
                 SpawnEnemy();
@@ -109,16 +110,48 @@ public class ManageGame : MonoBehaviour
         Quaternion ghoulRotation = player.transform.rotation;
         Instantiate(ghoulPrefab, ghoulLocation, ghoulRotation);
         totalBaddiesSpawned++;
-        Debug.Log(totalBaddiesSpawned);
+    }
+
+    public void SpawnSpectre()
+    {
+        Vector3 spectreLocation = player.transform.position;
+        TransferBot spectrePlatform;
+        int playerPlatform = player.GetPlatformMode();
+        playerPlatform += 2;
+        if (playerPlatform > 3)
+        {
+            playerPlatform -= 4;
+        }
+        spectrePlatform = GetPlatformToSpawnSpectre(playerPlatform);
+        spectreLocation = spectrePlatform.GetFartherSpectreSpawnLocation();
+        Instantiate(spectrePrefab, spectreLocation, Quaternion.identity);
+        totalBaddiesSpawned++;
     }
 
     public void IncTotalKilled()
     {
-        totalKilled += 1.0f;;
+        totalKilled += 1.0f;
+        if ((totalKilled % numBaddiesKilledToSpectre) == 0.0f)
+        {
+            SpawnSpectre();
+        }
     }
 
     public float GetTotalKilled()
     {
         return totalKilled;
+    }
+
+    TransferBot GetPlatformToSpawnSpectre(int spawnPlatform)
+    {
+        TransferBot resultPlatform = gameObject.AddComponent<TransferBot>();
+        foreach(TransferBot platform in platforms)
+        {
+            if (platform.GetPlatformNumber() == spawnPlatform)
+            {
+                resultPlatform = platform;
+            }
+        }
+        return resultPlatform;
     }
 }
