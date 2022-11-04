@@ -4,6 +4,7 @@ public class ManageGame : MonoBehaviour
 {
     SoundManager soundManager;
     BotBehavior player;
+    Scoreboard scoreboard;
     public GameObject[] spawnLocations;
     int previousSpawnLocation;
     public GameObject enemyPrefab;
@@ -24,7 +25,9 @@ public class ManageGame : MonoBehaviour
     public GameObject playButtonPrefab;
     public GameObject quitButtonPrefab;
     int totalBaddiesSpawned;
+    int shotsFired;
     float totalKilled;
+    public float accuracyBonusMultiplier;
     
     void Start()
     {
@@ -39,7 +42,8 @@ public class ManageGame : MonoBehaviour
     {
         soundManager = FindObjectOfType<SoundManager>();
         player = FindObjectOfType<BotBehavior>();
-        platforms = FindObjectsOfType<TransferBot>();   // **** NOT IN ORDER THAT I EXPECT - EITHER PUT IN ARRAY MANUALLY OR GET NUMBER IN FUNTION BELOW
+        platforms = FindObjectsOfType<TransferBot>();
+        scoreboard = FindObjectOfType<Scoreboard>();
     }
 
     void SpawnEnemy()
@@ -140,6 +144,19 @@ public class ManageGame : MonoBehaviour
     public float GetTotalKilled()
     {
         return totalKilled;
+    }
+
+    public void IncShotsFired()
+    {
+        shotsFired++;
+    }
+
+    public void CalcScoreInc(float baddiePoints)
+    {
+        float newValue = (totalKilled / shotsFired) * accuracyBonusMultiplier;
+        newValue += baddiePoints;
+        int result = Mathf.CeilToInt(newValue);
+        scoreboard.UpdateScore(result);
     }
 
     TransferBot GetPlatformToSpawnSpectre(int spawnPlatform)

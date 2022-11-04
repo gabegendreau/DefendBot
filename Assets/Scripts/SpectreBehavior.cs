@@ -139,6 +139,7 @@ public class SpectreBehavior : MonoBehaviour
         isDead = true;
         gameObject.tag = "Unshootable";
         gameManager.IncTotalKilled();
+        gameManager.CalcScoreInc(spectreDamage);
         spectreCollider.enabled = false;
         soundManager.playSpectreSpawn();
         PhaseOut();

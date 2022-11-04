@@ -97,6 +97,7 @@ public class EnemyBehavior : MonoBehaviour
         enemyCollider.enabled = false;
         spriteRenderer.sprite = deadSprite;
         gameManager.IncEnemiesKilled();
+        gameManager.CalcScoreInc(station.GetEnemyDamage());
         Invoke("RotAway", rotDelay);
     }
 

@@ -100,6 +100,7 @@ public class GhoulBehavior : MonoBehaviour
         isShot = true;
         gameObject.tag = "Unshootable";
         gameManager.IncTotalKilled();
+        gameManager.CalcScoreInc(ghoulDamage);
         foreach (BoxCollider2D collider in ghoulColliders)
         {
             enabled = false;

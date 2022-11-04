@@ -132,4 +132,9 @@ public class StationBehavior : MonoBehaviour
         health = defaultHealth;
         gameManager.UpdatePowerbar(health);
     }
+
+    public float GetEnemyDamage()
+    {
+        return damageFromEnemy;
+    }
 }
