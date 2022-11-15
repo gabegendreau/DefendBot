@@ -87,6 +87,11 @@ public class ProjectileBehavior : MonoBehaviour
                 other.GetComponent<SpectreBehavior>().GetShot();
             }
         }
+
+        if (other.tag == "Crystal" && !other.GetComponent<CrystalBehavior>().GetCollected())
+        {
+            Destroy(gameObject);
+        }
     }
 
     void DelayedDestroy()

@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip ghoulSpawn;
     public AudioClip spectreSpawn;
     public AudioClip spectreMove;
+    public AudioClip crystalSpawn;
+    public AudioClip crystalConsume;
 
     // Start is called before the first frame update
     void Start()
@@ -56,5 +58,15 @@ public class SoundManager : MonoBehaviour
         public void playSpectreMove()
     {
         audioSource.PlayOneShot(spectreMove);
+    }
+
+        public void playCrystalSpawn()
+    {
+        audioSource.PlayOneShot(crystalSpawn);
+    }
+
+        public void playCrystalConsume()
+    {
+        audioSource.PlayOneShot(crystalConsume);
     }
 }

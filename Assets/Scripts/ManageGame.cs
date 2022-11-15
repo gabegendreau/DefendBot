@@ -5,13 +5,17 @@ public class ManageGame : MonoBehaviour
     SoundManager soundManager;
     BotBehavior player;
     Scoreboard scoreboard;
+    CrystalScoreboard crystalScoreboard;
     public GameObject[] spawnLocations;
     int previousSpawnLocation;
     public GameObject enemyPrefab;
     public GameObject ghoulPrefab;
     public GameObject spectrePrefab;
+    public GameObject crystalPrefab;
     public int numEnemiesKilledToGhoul;
     public int numBaddiesKilledToSpectre;
+    public float crystalSpawnInterval;
+    public float crystalSpawnRadius;
     int numEnemiesKilled;
     public float minSpawnInterval;
     public float maxSpawnInterval;
@@ -28,6 +32,7 @@ public class ManageGame : MonoBehaviour
     int shotsFired;
     float totalKilled;
     public float accuracyBonusMultiplier;
+    int crystalsCollected;
     
     void Start()
     {
@@ -35,7 +40,9 @@ public class ManageGame : MonoBehaviour
         totalBaddiesSpawned = 0;
         totalKilled = 0.0f;
         gameOver = false;
+        crystalsCollected = 0;
         SpawnEnemy();
+        InvokeRepeating("SpawnCrystal", crystalSpawnInterval, crystalSpawnInterval);
     }
 
     void Awake()
@@ -44,6 +51,7 @@ public class ManageGame : MonoBehaviour
         player = FindObjectOfType<BotBehavior>();
         platforms = FindObjectsOfType<TransferBot>();
         scoreboard = FindObjectOfType<Scoreboard>();
+        crystalScoreboard = FindObjectOfType<CrystalScoreboard>();
     }
 
     void SpawnEnemy()
@@ -141,6 +149,19 @@ public class ManageGame : MonoBehaviour
         }
     }
 
+    public void SpawnCrystal()
+    {
+        float xValue = Random.Range(-crystalSpawnRadius, crystalSpawnRadius);
+        float yValue = Mathf.Sqrt((crystalSpawnRadius * crystalSpawnRadius) - (xValue * xValue));
+        int isNegative = Random.Range(0, 2);
+        if (isNegative == 1)
+        {
+            yValue = -yValue;
+        }
+        Vector3 crystalSpawnLocation = new Vector3(xValue, yValue, 0.0f);
+        Instantiate(crystalPrefab, crystalSpawnLocation, Quaternion.identity);
+    }
+
     public float GetTotalKilled()
     {
         return totalKilled;
@@ -170,5 +191,16 @@ public class ManageGame : MonoBehaviour
             }
         }
         return resultPlatform;
+    }
+
+    public void CollectCrystal()
+    {
+        crystalsCollected++;
+        crystalScoreboard.UpdateCrystals(crystalsCollected);
+        if (crystalsCollected >= 10)
+        {
+            // NEXT LEVEL **********************************************************************
+            Debug.Log("NEXT LEVEL");
+        }
     }
 }
