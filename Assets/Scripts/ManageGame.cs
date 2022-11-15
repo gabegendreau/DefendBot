@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ManageGame : MonoBehaviour
 {
@@ -6,6 +8,9 @@ public class ManageGame : MonoBehaviour
     BotBehavior player;
     Scoreboard scoreboard;
     CrystalScoreboard crystalScoreboard;
+    public int levelNumber;
+    public GameObject levelDisplay;
+    TextMeshProUGUI levelDisplayText;
     public GameObject[] spawnLocations;
     int previousSpawnLocation;
     public GameObject enemyPrefab;
@@ -23,6 +28,7 @@ public class ManageGame : MonoBehaviour
     TransferBot[] platforms;
     public GameObject powerBarScaler;
     public GameObject gameOverText;
+    public GameObject nextLevelText;
     bool gameOver;
     public GameObject playButtonLocation;
     public GameObject quitButtonLocation;
@@ -33,6 +39,7 @@ public class ManageGame : MonoBehaviour
     float totalKilled;
     public float accuracyBonusMultiplier;
     int crystalsCollected;
+    public string nextLevelName;
     
     void Start()
     {
@@ -41,6 +48,7 @@ public class ManageGame : MonoBehaviour
         totalKilled = 0.0f;
         gameOver = false;
         crystalsCollected = 0;
+        levelDisplayText.text = levelNumber.ToString();
         SpawnEnemy();
         InvokeRepeating("SpawnCrystal", crystalSpawnInterval, crystalSpawnInterval);
     }
@@ -52,6 +60,7 @@ public class ManageGame : MonoBehaviour
         platforms = FindObjectsOfType<TransferBot>();
         scoreboard = FindObjectOfType<Scoreboard>();
         crystalScoreboard = FindObjectOfType<CrystalScoreboard>();
+        levelDisplayText = levelDisplay.GetComponent<TextMeshProUGUI>();
     }
 
     void SpawnEnemy()
@@ -199,8 +208,19 @@ public class ManageGame : MonoBehaviour
         crystalScoreboard.UpdateCrystals(crystalsCollected);
         if (crystalsCollected >= 10)
         {
-            // NEXT LEVEL **********************************************************************
-            Debug.Log("NEXT LEVEL");
+            gameOver = true;
+            nextLevelText.SetActive(true);
+            GameObject[] leftoverEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach(GameObject enemy in leftoverEnemies)
+            {
+                Destroy(enemy.gameObject);
+            }
+            Invoke("LoadNextLevel", 1.5f);
         }
+    }
+
+    void LoadNextLevel()
+    {
+        SceneManager.LoadScene(nextLevelName);
     }
 }
