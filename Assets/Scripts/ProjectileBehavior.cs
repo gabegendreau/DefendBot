@@ -70,7 +70,7 @@ public class ProjectileBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Level" || other.tag == "Enemy")
+        if (other.tag == "Enemy")
         {
             projectileBody.velocity = Vector2.zero;
             spriteChange = true;
@@ -87,7 +87,11 @@ public class ProjectileBehavior : MonoBehaviour
                 other.GetComponent<SpectreBehavior>().GetShot();
             }
         }
-
+        if (other.tag == "Level" && !other.isTrigger)
+        {
+            projectileBody.velocity = Vector2.zero;
+            spriteChange = true;
+        }
         if (other.tag == "Crystal" && !other.GetComponent<CrystalBehavior>().GetCollected())
         {
             Destroy(gameObject);

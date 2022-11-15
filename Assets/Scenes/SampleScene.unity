@@ -452,6 +452,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Level
       objectReference: {fileID: 0}
+    - target: {fileID: 636027955549974397, guid: 14f91473b1082e045859fff37c8198a3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8531193202983939410, guid: 14f91473b1082e045859fff37c8198a3, type: 3}
       propertyPath: gravityScale
       value: 1
@@ -1019,18 +1023,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -757772363288239944, guid: 8a995bc5125379a428752abdffa995fa, type: 3}
-      propertyPath: batteryPrefab
-      value: 
-      objectReference: {fileID: 240548055455594898, guid: 26c5fde1c9c50d5449ee2075fe1789fe, type: 3}
-    - target: {fileID: -757772363288239944, guid: 8a995bc5125379a428752abdffa995fa, type: 3}
-      propertyPath: batteryCooldownTime
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: -757772363288239944, guid: 8a995bc5125379a428752abdffa995fa, type: 3}
-      propertyPath: batterySpawnPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: -757772363288239944, guid: 8a995bc5125379a428752abdffa995fa, type: 3}
       propertyPath: batterySpawnPoints.Array.data[0]
       value: 
@@ -1681,7 +1673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1929331222871724535, guid: 891ab2ce80db62e4f9069bd2a9999a10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.22
       objectReference: {fileID: 0}
     - target: {fileID: 1929331222871724535, guid: 891ab2ce80db62e4f9069bd2a9999a10, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2000,7 +1992,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 245.4}
+  m_AnchoredPosition: {x: -219.83, y: 245.4}
   m_SizeDelta: {x: 10.944, y: 6.8697}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1224487942
@@ -2136,7 +2128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -218.8, y: 228.3}
+  m_AnchoredPosition: {x: 0, y: 228.3}
   m_SizeDelta: {x: 10.944, y: 6.8697}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317076005
@@ -2536,7 +2528,7 @@ GameObject:
   - component: {fileID: 1627128634}
   - component: {fileID: 1627128633}
   m_Layer: 5
-  m_Name: Score Tile
+  m_Name: Score Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2559,7 +2551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -218.8, y: 245.4}
+  m_AnchoredPosition: {x: 0, y: 245.4}
   m_SizeDelta: {x: 10.944, y: 6.8697}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627128633
