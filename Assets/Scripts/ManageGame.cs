@@ -98,6 +98,19 @@ public class ManageGame : MonoBehaviour
         {
             Destroy(enemy.gameObject);
         }
+        GameObject[] leftoverBatteries = GameObject.FindGameObjectsWithTag("Battery");
+        if (leftoverBatteries.Length != 0)
+        {
+            foreach(GameObject battery in leftoverBatteries)
+            {
+                Destroy(battery.gameObject);
+            }
+        }
+        GameObject leftoverCrystal = GameObject.FindGameObjectWithTag("Crystal");
+        if (leftoverCrystal)
+        {
+            Destroy(leftoverCrystal);
+        }
         Invoke("SpawnButtons", 1.0f);
     }
 

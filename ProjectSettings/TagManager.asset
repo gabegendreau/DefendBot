@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - Unshootable
   - Crystal
+  - Battery
   layers:
   - Default
   - TransparentFX
