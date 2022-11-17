@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d156649fad8ec0b42a65c321ec67b051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumber: 2
+  levelNumber: 3
   levelDisplay: {fileID: 790911662}
   spawnLocations:
   - {fileID: 1714013618}
@@ -1269,7 +1269,7 @@ MonoBehaviour:
   playButtonPrefab: {fileID: 8170425260968672828, guid: d6a837b3a827ef54d945d715302fe6bc, type: 3}
   quitButtonPrefab: {fileID: 8170425260968672828, guid: 7de279e2077a7ce43b5d402912635f5f, type: 3}
   accuracyBonusMultiplier: 23
-  nextLevelName: Level_3
+  nextLevelName: Level_4
 --- !u!4 &569138460
 Transform:
   m_ObjectHideFlags: 0
@@ -1297,9 +1297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43217122985c7541896cc611f199b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelRed: 1
-  levelGreen: 0.8
-  levelBlue: 0.7
+  levelRed: 0.65
+  levelGreen: 1
+  levelBlue: 0.85
   levelAlpha: 1
 --- !u!1 &602335939
 GameObject:
