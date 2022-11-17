@@ -6,6 +6,7 @@ public class StationBehavior : MonoBehaviour
     public Sprite[] stationSprites;
     public int framesPerSecond;
     SpriteRenderer spriteRenderer;
+    ManageColors colorManager;
     BotBehavior player;
     bool spriteChange;
     int spriteIndex;
@@ -22,6 +23,7 @@ public class StationBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer.color = colorManager.GetLevelColor();
         spriteIndex = 0;
         spriteChange = true;
         batteryCooldown = false;
@@ -32,6 +34,7 @@ public class StationBehavior : MonoBehaviour
     {
         soundManager = FindObjectOfType<SoundManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        colorManager = FindObjectOfType<ManageColors>();
         gameManager = FindObjectOfType<ManageGame>();
         player = FindObjectOfType<BotBehavior>();
         gameOver = false;

@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3435341841691444807, guid: cbf5e07753d2b274b87f2df6d4004f65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.05
+      value: -4.3
       objectReference: {fileID: 0}
     - target: {fileID: 3435341841691444807, guid: cbf5e07753d2b274b87f2df6d4004f65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -215,7 +215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -11}
   m_SizeDelta: {x: 730, y: 463}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &543328494
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 1531158870}
   - component: {fileID: 1531158869}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DefendbotTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,7 +580,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 281.49}
+  m_AnchoredPosition: {x: 0, y: 296}
   m_SizeDelta: {x: 731.2457, y: 84.3044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1531158869

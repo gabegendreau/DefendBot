@@ -19,8 +19,8 @@ public class CrystalScoreboard : MonoBehaviour
 
     public void UpdateCrystals(int numCrystals)
     {
-        Image[] allCrystals = GetComponentsInChildren<Image>();
-        foreach (Image crystal in allCrystals)
+        SpriteRenderer[] crystalRenderers = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer crystal in crystalRenderers)
         {
             string crystalName = crystal.gameObject.name.Replace("Crystal", "");
             int crystalNum = int.Parse(crystalName);

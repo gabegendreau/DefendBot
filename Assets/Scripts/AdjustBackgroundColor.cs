@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class StartNewGame : MonoBehaviour
+public class AdjustBackgroundColor : MonoBehaviour
 {
-    public GameObject projectile;
     SpriteRenderer spriteRenderer;
     ManageColors colorManager;
 
+    // Start is called before the first frame update
     void Start()
     {
         spriteRenderer.color = colorManager.GetLevelColor();
@@ -16,13 +15,5 @@ public class StartNewGame : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         colorManager = FindObjectOfType<ManageColors>();
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Projectile")
-        {
-            SceneManager.LoadScene(0);
-        }
     }
 }

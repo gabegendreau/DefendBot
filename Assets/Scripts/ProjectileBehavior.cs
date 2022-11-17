@@ -9,6 +9,7 @@ public class ProjectileBehavior : MonoBehaviour
     Vector3 explosionScaleVector;
     Rigidbody2D projectileBody;
     SpriteRenderer spriteRenderer;
+    ManageColors colorManager;
     Vector2 direction;
     Vector2 centerPoint;
     RotateGun gunScript;
@@ -20,15 +21,13 @@ public class ProjectileBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer.color = colorManager.GetLevelColor();
         explosionScaleVector = new Vector3(explosionScaleStep, explosionScaleStep, 0.0f);
         isBeingDestroyed = false;
         spriteIndex = 0;
         spriteChange = false;
         frameRate = CalcFrameRate();
-        gunScript = FindObjectOfType<RotateGun>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         centerPoint = new Vector2(gunScript.gameObject.transform.position.x, gunScript.gameObject.transform.position.y);
-        projectileBody = gameObject.GetComponent<Rigidbody2D>();
         Vector2 projectilePosition = new Vector2(projectileBody.transform.position.x, projectileBody.transform.position.y);
         direction = projectilePosition - centerPoint;
         projectileBody.velocity = direction * speed;
@@ -36,7 +35,10 @@ public class ProjectileBehavior : MonoBehaviour
 
     void Awake()
     {
-
+        colorManager = FindObjectOfType<ManageColors>();
+        gunScript = FindObjectOfType<RotateGun>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        projectileBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame

@@ -75,6 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6169473715981395653}
   - component: {fileID: 1054557753811740582}
+  - component: {fileID: 4509092676799411361}
   m_Layer: 0
   m_Name: Powerbar Fill
   m_TagString: Untagged
@@ -149,6 +150,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4509092676799411361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292289109792424512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e74ba777bcd60f44a7e7d3108fd509c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7626252932202504668
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8591870626625673897}
   - component: {fileID: 8544692965992443700}
+  - component: {fileID: 662546666407948683}
   m_Layer: 0
   m_Name: Powerbar Frame
   m_TagString: Untagged
@@ -233,3 +247,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &662546666407948683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7626252932202504668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e74ba777bcd60f44a7e7d3108fd509c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

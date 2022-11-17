@@ -4,6 +4,7 @@ public class EnemyBehavior : MonoBehaviour
 {
     ManageGame gameManager;
     SoundManager soundManager;
+    ManageColors colorManager;
     StationBehavior station;
     Vector3 stationLocation;
     Vector3 moveDirection;
@@ -34,6 +35,7 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
+        spriteRenderer.color = colorManager.GetLevelColor();
         isDead = false;
         spriteIndex = 0;
         spriteChange = true;
@@ -60,6 +62,7 @@ public class EnemyBehavior : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
         gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        colorManager = FindObjectOfType<ManageColors>();
     }
 
     // Update is called once per frame

@@ -8,6 +8,7 @@ public class SpectreBehavior : MonoBehaviour
     ManageGame gameManager;
     Rigidbody2D spectreBody;
     SpriteRenderer spriteRenderer;
+    ManageColors colorManager;
     BoxCollider2D spectreCollider;
     Vector3 moveDirection;
     Vector3 movementVector;
@@ -39,6 +40,7 @@ public class SpectreBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer.color = colorManager.GetLevelColor();
         zigZagPaused = false;
         zigZagT = 0.0f;
         hasSpawned = false;
@@ -63,6 +65,7 @@ public class SpectreBehavior : MonoBehaviour
         spectreBody = GetComponent<Rigidbody2D>();
         spectreCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        colorManager = FindObjectOfType<ManageColors>();
         moveDirection = player.transform.position - gameObject.transform.position;
         moveDirection = moveDirection.normalized;
         movementVector = moveDirection * speed;

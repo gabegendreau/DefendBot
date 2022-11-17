@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayAnimations : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
+    ManageColors colorManager;
     public Sprite[] walkSprites;
     public Sprite[] idleSprites;
     public float framesPerSecond;
@@ -13,7 +14,13 @@ public class PlayAnimations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer.color = colorManager.GetLevelColor();
+    }
+
+    void Awake()
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        colorManager = FindObjectOfType<ManageColors>();
     }
 
     // Update is called once per frame
