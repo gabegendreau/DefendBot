@@ -1256,11 +1256,11 @@ MonoBehaviour:
   spectrePrefab: {fileID: 1139340976790755028, guid: 9215d3e8244bb42429e5397556480b72, type: 3}
   crystalPrefab: {fileID: 1051471135113414541, guid: 45b138480f58fa74e826b2f520955dc5, type: 3}
   numEnemiesKilledToGhoul: 6
-  numBaddiesKilledToSpectre: 14
+  numBaddiesKilledToSpectre: 13
   crystalSpawnInterval: 30
   crystalSpawnRadius: 1.25
-  minSpawnInterval: 1
-  maxSpawnInterval: 2.14
+  minSpawnInterval: 0.9
+  maxSpawnInterval: 1.9
   powerBarScaler: {fileID: 1063620223}
   gameOverText: {fileID: 1114589057}
   nextLevelText: {fileID: 1549077388}

@@ -107,6 +107,7 @@ public class CrystalBehavior : MonoBehaviour
         if (other.tag == "Projectile")
         {
             isCollected = true;
+            gameManager.IncTotalKilled();
             rotateSpeed = collectedRotateSpeed;
             pulseFramesPerSecond = collectedFramesPerSecond;
         }

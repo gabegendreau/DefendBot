@@ -1259,8 +1259,8 @@ MonoBehaviour:
   numBaddiesKilledToSpectre: 15
   crystalSpawnInterval: 30
   crystalSpawnRadius: 1.25
-  minSpawnInterval: 1.15
-  maxSpawnInterval: 2.22
+  minSpawnInterval: 1.1
+  maxSpawnInterval: 2.1
   powerBarScaler: {fileID: 1063620223}
   gameOverText: {fileID: 1114589057}
   nextLevelText: {fileID: 1549077388}
