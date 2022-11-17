@@ -222,7 +222,10 @@ public class ManageGame : MonoBehaviour
         if (crystalsCollected >= 10)
         {
             gameOver = true;
-            nextLevelText.SetActive(true);
+            if (levelNumber != 5)
+            {
+                nextLevelText.SetActive(true);
+            }
             GameObject[] leftoverEnemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach(GameObject enemy in leftoverEnemies)
             {
