@@ -9,7 +9,6 @@ public class ProjectileBehavior : MonoBehaviour
     Vector3 explosionScaleVector;
     Rigidbody2D projectileBody;
     SpriteRenderer spriteRenderer;
-    ManageColors colorManager;
     Vector2 direction;
     Vector2 centerPoint;
     RotateGun gunScript;
@@ -21,7 +20,6 @@ public class ProjectileBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer.color = colorManager.GetLevelColor();
         explosionScaleVector = new Vector3(explosionScaleStep, explosionScaleStep, 0.0f);
         isBeingDestroyed = false;
         spriteIndex = 0;
@@ -35,7 +33,6 @@ public class ProjectileBehavior : MonoBehaviour
 
     void Awake()
     {
-        colorManager = FindObjectOfType<ManageColors>();
         gunScript = FindObjectOfType<RotateGun>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         projectileBody = gameObject.GetComponent<Rigidbody2D>();

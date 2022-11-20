@@ -4,7 +4,6 @@ public class TransferBot : MonoBehaviour
 {
     public int platformNumber;
     public float gravityScale;
-    ManageColors colorManager;
     SpriteRenderer spriteRenderer;
     public GameObject[] ghoulSpawnLocations;
     Vector3 forceVector;
@@ -19,7 +18,6 @@ public class TransferBot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer.color = colorManager.GetLevelColor();
         forceVector = Vector3.zero;
         gravityDown = new Vector3(0.0f, -1.0f, 0.0f);
         gravityUp = new Vector3(0.0f, 1.0f, 0.0f);
@@ -32,7 +30,6 @@ public class TransferBot : MonoBehaviour
         gunScript = FindObjectOfType<RotateGun>();
         player = FindObjectOfType<BotBehavior>();
         botBody = player.GetComponent<Rigidbody2D>();
-        colorManager = FindObjectOfType<ManageColors>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 

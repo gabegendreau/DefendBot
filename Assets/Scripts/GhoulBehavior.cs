@@ -4,7 +4,6 @@ public class GhoulBehavior : MonoBehaviour
 {
     SoundManager soundManager;
     ManageGame gameManager;
-    ManageColors colorManager;
     StationBehavior station;
     Vector3 moveDirection;
     Vector3 platformGravity;
@@ -38,7 +37,6 @@ public class GhoulBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer.color = colorManager.GetLevelColor();
         hasSpawned = false;
         isBeingDestroyed = false;
         isShot = false;
@@ -63,7 +61,6 @@ public class GhoulBehavior : MonoBehaviour
         ghoulColliders = GetComponents<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         platformMode = player.GetPlatformMode();
-        colorManager = FindObjectOfType<ManageColors>();
     }
     
     void Update()

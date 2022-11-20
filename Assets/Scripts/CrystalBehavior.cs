@@ -5,7 +5,6 @@ public class CrystalBehavior : MonoBehaviour
     SpriteRenderer spriteRenderer;
     SoundManager soundManager;
     ManageGame gameManager;
-    ManageColors colorManager;
     BotBehavior player;
     CircleCollider2D crystalCollider;
     Rigidbody2D crystalBody;
@@ -30,7 +29,6 @@ public class CrystalBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer.color = colorManager.GetLevelColor();
         isCollected = false;
         spriteChange = true;
         hasSpawned = false;
@@ -48,7 +46,6 @@ public class CrystalBehavior : MonoBehaviour
         crystalCollider = GetComponent<CircleCollider2D>();
         player = FindObjectOfType<BotBehavior>();
         crystalBody = GetComponent<Rigidbody2D>();
-        colorManager = FindObjectOfType<ManageColors>();
     }
 
     // Update is called once per frame

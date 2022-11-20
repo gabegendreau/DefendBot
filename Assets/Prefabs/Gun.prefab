@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 7663946495102804737}
   - component: {fileID: 7668578239857355666}
   - component: {fileID: 9148636606236022489}
-  - component: {fileID: -5192474782687949236}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -116,18 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationOffset: -90
---- !u!114 &-5192474782687949236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253761959192241036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46d1f98a70dbb1a45b291f10f02c7aba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8646305279217019951
 GameObject:
   m_ObjectHideFlags: 0
