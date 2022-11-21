@@ -33,6 +33,7 @@ public class GhoulBehavior : MonoBehaviour
     int platformMode;
     public float gravityScale;
     public float ghoulDamage;
+    public float speedIncreaseAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,7 @@ public class GhoulBehavior : MonoBehaviour
         burrowSpriteIndex = 0;
         spriteChange = true;
         soundManager.playGhoulSpawn();
+        AdjustSpeedForLevel();
         SpawnAnim();
         SetGravity(player.GetGravity());
     }
@@ -127,7 +129,7 @@ public class GhoulBehavior : MonoBehaviour
 
     public void Explode()
     {
-        if (!isBeingDestroyed)
+        if (!isBeingDestroyed && !isShot)
         {
             foreach (BoxCollider2D collider in ghoulColliders)
             {
@@ -184,5 +186,11 @@ public class GhoulBehavior : MonoBehaviour
             isExploding = true;
             Explode();
         }
+    }
+
+    void AdjustSpeedForLevel()
+    {
+        int offsetLevel = gameManager.GetLevelNumber() - 1;
+        speed += (speedIncreaseAmount * offsetLevel);
     }
 }

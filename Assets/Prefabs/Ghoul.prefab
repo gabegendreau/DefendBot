@@ -86,6 +86,7 @@ MonoBehaviour:
   burrowFramesPerSecond: 8
   gravityScale: 1
   ghoulDamage: 10
+  speedIncreaseAmount: 0.13
 --- !u!212 &1926181056478004512
 SpriteRenderer:
   m_ObjectHideFlags: 0

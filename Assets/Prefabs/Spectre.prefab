@@ -131,6 +131,7 @@ MonoBehaviour:
   - {fileID: -911157406, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
   - {fileID: -2093704195, guid: 4de941aec31f87f41b08ece9b2c95edc, type: 3}
   phaseOutFramesPerSecond: 8
+  speedIncreaseAmount: 0.12
 --- !u!1 &8456086409141528269
 GameObject:
   m_ObjectHideFlags: 0

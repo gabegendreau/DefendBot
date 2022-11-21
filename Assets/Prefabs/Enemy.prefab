@@ -184,3 +184,4 @@ MonoBehaviour:
   - {fileID: 1925769862, guid: 8a82b570c4b783941ab74367acfb3269, type: 3}
   - {fileID: -1980989134, guid: 8a82b570c4b783941ab74367acfb3269, type: 3}
   spawnFramesPerSecond: 10
+  speedIncreaseAmount: 0.15

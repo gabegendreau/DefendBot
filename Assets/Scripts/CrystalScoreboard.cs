@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class CrystalScoreboard : MonoBehaviour
 {
     public Sprite crystalFilled;
+    public Sprite crystalEmpty;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,15 @@ public class CrystalScoreboard : MonoBehaviour
             {
                 crystal.sprite = crystalFilled;
             }
+        }
+    }
+
+    public void ResetCrystals()
+    {
+        SpriteRenderer[] crystalRenderers = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer crystal in crystalRenderers)
+        {
+                crystal.sprite = crystalEmpty;
         }
     }
 }

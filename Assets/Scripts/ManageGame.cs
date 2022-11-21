@@ -7,8 +7,9 @@ public class ManageGame : MonoBehaviour
     SoundManager soundManager;
     BotBehavior player;
     Scoreboard scoreboard;
+    StationBehavior station;
     CrystalScoreboard crystalScoreboard;
-    public int levelNumber;
+    int levelNumber;
     public GameObject levelDisplay;
     TextMeshProUGUI levelDisplayText;
     public GameObject[] spawnLocations;
@@ -39,10 +40,10 @@ public class ManageGame : MonoBehaviour
     float totalKilled;
     public float accuracyBonusMultiplier;
     int crystalsCollected;
-    public string nextLevelName;
     
     void Start()
     {
+        levelNumber = 1;
         previousSpawnLocation = 99;
         totalBaddiesSpawned = 0;
         totalKilled = 0.0f;
@@ -50,7 +51,7 @@ public class ManageGame : MonoBehaviour
         crystalsCollected = 0;
         levelDisplayText.text = levelNumber.ToString();
         SpawnEnemy();
-        InvokeRepeating("SpawnCrystal", crystalSpawnInterval, crystalSpawnInterval);
+        Invoke("SpawnCrystal", crystalSpawnInterval);
     }
 
     void Awake()
@@ -61,6 +62,7 @@ public class ManageGame : MonoBehaviour
         scoreboard = FindObjectOfType<Scoreboard>();
         crystalScoreboard = FindObjectOfType<CrystalScoreboard>();
         levelDisplayText = levelDisplay.GetComponent<TextMeshProUGUI>();
+        station = FindObjectOfType<StationBehavior>();
     }
 
     void SpawnEnemy()
@@ -182,6 +184,8 @@ public class ManageGame : MonoBehaviour
         }
         Vector3 crystalSpawnLocation = new Vector3(xValue, yValue, 0.0f);
         Instantiate(crystalPrefab, crystalSpawnLocation, Quaternion.identity);
+        Debug.Log("spawn delay " + crystalSpawnInterval);
+        Invoke("SpawnCrystal", crystalSpawnInterval);
     }
 
     public float GetTotalKilled()
@@ -221,22 +225,37 @@ public class ManageGame : MonoBehaviour
         crystalScoreboard.UpdateCrystals(crystalsCollected);
         if (crystalsCollected >= 10)
         {
-            gameOver = true;
-            if (levelNumber != 5)
-            {
-                nextLevelText.SetActive(true);
-            }
-            GameObject[] leftoverEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach(GameObject enemy in leftoverEnemies)
-            {
-                Destroy(enemy.gameObject);
-            }
-            Invoke("LoadNextLevel", 1.5f);
+            nextLevelText.SetActive(true);
+            Invoke("LoadNextLevel", 1.0f);
         }
     }
-
+//////////////////////////////////////////// add offset time to ghoul and spectre, adjust ghoul gravity? ******************************************
     void LoadNextLevel()
     {
-        SceneManager.LoadScene(nextLevelName);
+        levelNumber++;
+        crystalSpawnInterval += 1.0f;
+        nextLevelText.SetActive(false);
+        levelDisplayText.text = levelNumber.ToString();
+        station.RechargePower();
+        crystalsCollected = 0;
+        crystalScoreboard.ResetCrystals();
+        numEnemiesKilledToGhoul--;
+        numBaddiesKilledToSpectre--;
+        minSpawnInterval -= 0.1f;
+        if (minSpawnInterval < 0.5f)
+        {
+            minSpawnInterval = 0.5f;
+        }
+        maxSpawnInterval -= 0.12f;
+        if (maxSpawnInterval < 0.75f)
+        {
+            maxSpawnInterval = 0.75f;
+        }
+        accuracyBonusMultiplier += 1.0f;
+    }
+
+    public int GetLevelNumber()
+    {
+        return levelNumber;
     }
 }

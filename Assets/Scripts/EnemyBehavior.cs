@@ -30,6 +30,7 @@ public class EnemyBehavior : MonoBehaviour
     int spawnSpriteIndex;
     bool hasSpawned;
     bool isBeingDestroyed;
+    public float speedIncreaseAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class EnemyBehavior : MonoBehaviour
         spawnSpriteIndex = 0;
         isBeingDestroyed = false;
         hasSpawned = false;
+        AdjustSpeedForLevel();
         soundManager.playEnemySpawn();
         SpawnAnim();
     }
@@ -148,5 +150,11 @@ public class EnemyBehavior : MonoBehaviour
                 Invoke("SpawnAnim", 1.0f/spawnFramesPerSecond);
             }
         }
+    }
+
+    void AdjustSpeedForLevel()
+    {
+        int offsetLevel = gameManager.GetLevelNumber() - 1;
+        speed += (speedIncreaseAmount * offsetLevel);
     }
 }

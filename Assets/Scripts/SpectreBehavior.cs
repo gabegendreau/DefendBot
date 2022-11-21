@@ -35,6 +35,7 @@ public class SpectreBehavior : MonoBehaviour
     public Sprite[] spectrePhaseOutSprites;
     public int phaseOutFramesPerSecond;
     int spectrePhaseOutIndex;
+    public float speedIncreaseAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,7 @@ public class SpectreBehavior : MonoBehaviour
         spectreFlyIndex = 0;
         spectreExplodeIndex = 0;
         spectrePhaseOutIndex = 0;
+        AdjustSpeedForLevel();
         soundManager.playSpectreSpawn();
         SpawnAnim();
     }
@@ -194,5 +196,11 @@ public class SpectreBehavior : MonoBehaviour
     {
         soundManager.playSpectreMove();
         zigZagPaused = false;
+    }
+
+    void AdjustSpeedForLevel()
+    {
+        int offsetLevel = gameManager.GetLevelNumber() - 1;
+        speed += (speedIncreaseAmount * offsetLevel);
     }
 }
