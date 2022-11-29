@@ -138,17 +138,20 @@ public class CrystalBehavior : MonoBehaviour
 
     void SelfDestruct()
     {
-        if (crystalCollider.enabled)
+        if (!isCollected)
         {
-            crystalCollider.enabled = false;
-        }
-        Color newColor = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, spriteRenderer.color.a - fadeOutAmount);
-        spriteRenderer.color = newColor;
-        if (newColor.a <= 0.05f)
-        {
-            Destroy(gameObject);
-        } else {
-            Invoke("SelfDestruct", 0.125f);
+            if (crystalCollider.enabled)
+            {
+                crystalCollider.enabled = false;
+            }
+            Color newColor = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, spriteRenderer.color.a - fadeOutAmount);
+            spriteRenderer.color = newColor;
+            if (newColor.a <= 0.05f)
+            {
+                Destroy(gameObject);
+            } else {
+                Invoke("SelfDestruct", 0.125f);
+            }
         }
     }
 }

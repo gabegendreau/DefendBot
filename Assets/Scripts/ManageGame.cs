@@ -129,7 +129,7 @@ public class ManageGame : MonoBehaviour
         if (numEnemiesKilled == numEnemiesKilledToGhoul)
         {
             numEnemiesKilled = 0;
-            SpawnGhoul();
+            Invoke("SpawnGhoul", 0.5f);
         }
     }
 
@@ -169,7 +169,7 @@ public class ManageGame : MonoBehaviour
         totalKilled += 1.0f;
         if ((totalKilled % numBaddiesKilledToSpectre) == 0.0f)
         {
-            SpawnSpectre();
+            Invoke("SpawnSpectre", 0.75f);
         }
     }
 
@@ -184,7 +184,6 @@ public class ManageGame : MonoBehaviour
         }
         Vector3 crystalSpawnLocation = new Vector3(xValue, yValue, 0.0f);
         Instantiate(crystalPrefab, crystalSpawnLocation, Quaternion.identity);
-        Debug.Log("spawn delay " + crystalSpawnInterval);
         Invoke("SpawnCrystal", crystalSpawnInterval);
     }
 
@@ -229,7 +228,7 @@ public class ManageGame : MonoBehaviour
             Invoke("LoadNextLevel", 1.0f);
         }
     }
-//////////////////////////////////////////// add offset time to ghoul and spectre, adjust ghoul gravity? ******************************************
+
     void LoadNextLevel()
     {
         levelNumber++;

@@ -168,7 +168,7 @@ public class GhoulBehavior : MonoBehaviour
 
     public void SetGravity(Vector3 newGravity)
     {
-        platformGravity = newGravity * gravityScale;
+        platformGravity = newGravity * speed;  //  newG * gravSc was original - new code seems to fix 'floating ghoul syndrome' 
     }
 
     public void SetPlaformMode(int mode)
