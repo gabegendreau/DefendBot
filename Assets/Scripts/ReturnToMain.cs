@@ -16,7 +16,7 @@ public class ReturnToMain : MonoBehaviour
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D mouseClick = Physics2D.Raycast(mousePosition, Vector2.zero);
-            if (mouseClick)
+            if (mouseClick && mouseClick.collider.gameObject.name == "MainMenuButton")
             {
                 SceneManager.LoadScene(0);
             }

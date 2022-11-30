@@ -40,9 +40,14 @@ public class ManageGame : MonoBehaviour
     float totalKilled;
     public float accuracyBonusMultiplier;
     int crystalsCollected;
+    bool isPaused;
+    public GameObject pausedText;
+    public GameObject mainMenuButton;
     
     void Start()
     {
+        isPaused = false;
+        Time.timeScale = 1.0f;
         levelNumber = 1;
         previousSpawnLocation = 99;
         totalBaddiesSpawned = 0;
@@ -63,6 +68,30 @@ public class ManageGame : MonoBehaviour
         crystalScoreboard = FindObjectOfType<CrystalScoreboard>();
         levelDisplayText = levelDisplay.GetComponent<TextMeshProUGUI>();
         station = FindObjectOfType<StationBehavior>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+    }
+
+    void TogglePause()
+    {
+        if (!isPaused)
+        {
+            isPaused = true;
+            Time.timeScale = 0.0f;
+            pausedText.SetActive(true);
+            mainMenuButton.SetActive(true);
+        } else {
+            isPaused = false;
+            Time.timeScale = 1.0f;
+            pausedText.SetActive(false);
+            mainMenuButton.SetActive(false);
+        }
     }
 
     void SpawnEnemy()
@@ -256,5 +285,10 @@ public class ManageGame : MonoBehaviour
     public int GetLevelNumber()
     {
         return levelNumber;
+    }
+
+    public bool GetIsPaused()
+    {
+        return isPaused;
     }
 }
