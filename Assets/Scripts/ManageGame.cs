@@ -213,7 +213,10 @@ public class ManageGame : MonoBehaviour
         }
         Vector3 crystalSpawnLocation = new Vector3(xValue, yValue, 0.0f);
         Instantiate(crystalPrefab, crystalSpawnLocation, Quaternion.identity);
-        Invoke("SpawnCrystal", crystalSpawnInterval);
+        if (!gameOver)
+        {
+            Invoke("SpawnCrystal", crystalSpawnInterval);
+        }
     }
 
     public float GetTotalKilled()
